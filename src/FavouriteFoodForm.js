@@ -1,4 +1,4 @@
-import {useState} from 'react'; 
+import useInputValue from './useInputValue.js';
 
 function FavouriteFoodForm() {
   const [favFood, setFavFood] = useState('');

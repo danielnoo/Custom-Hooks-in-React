@@ -1,26 +1,32 @@
 import useInputValue from './useInputValue.js';
 
 function FavouriteFoodForm() {
-  const [favFood, setFavFood] = useState('');
-  const [favSoup, setFavSoup] = useState('');
+  // const [favFood, setFavFood] = useState('');
+  // const [favSoup, setFavSoup] = useState('');
 
-  const handleFavFoodChange = (e) => {
-      setFavFood(e.target.value);
-  }
+  const [favFood, handleFavFoodChange, resetFavFood] = useInputValue();
 
-  const handleFavSoupChange = (e) => {
-      setFavSoup(e.target.value);
-  }
+  const[favSoup, handleFavSoupChange, resetFavSoup] = useInputValue();
+
+  
+  
+  // const handleFavFoodChange = (e) => {
+  //     setFavFood(e.target.value);
+  // }
+
+  // const handleFavSoupChange = (e) => {
+  //     setFavSoup(e.target.value);
+  // }
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // form submitting logic here
 
     // reset form after submit:
-    setFavFood('');
-    setFavSoup('');
+    resetFavFood('');
+    resetFavSoup('');
   }
-
+  
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="favFood">What is your favourite food?</label>

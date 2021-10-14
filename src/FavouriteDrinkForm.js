@@ -1,16 +1,10 @@
-import { useState } from 'react';
+import { useInputValue } from './useInputValue';
 
 const FavouriteDrinkForm = () => {
-    const [favDrink, setFavDrink] = useState('');
-    const [favBubblyDrink, setFavBubblyDrink] = useState('');
+    const [favDrink, setFavDrink, resetFavDrink] = useInputValue();
+    const [favBubblyDrink, setFavBubblyDrink, resetBubDrink] = useInputValue();
 
-    const handleFavDrinkChange = (e) => {
-        setFavDrink(e.target.value);
-    }
-
-    const handleFavBubblyDrinkChange = (e) => {
-        setFavBubblyDrink(e.target.value);
-    }
+   
 
 
     const handleSubmit = (event) => {
@@ -18,17 +12,17 @@ const FavouriteDrinkForm = () => {
         // form submitting logic here
 
         // reset form after submit:
-        setFavDrink('');
-        setFavBubblyDrink('');
+      resetFavDrink();
+      resetBubDrink();
     }
 
     return (
         <form onSubmit={handleSubmit}>
             <label htmlFor="favDrink">What is your favourite Drink?</label>
-            <input value={favDrink} onChange={handleFavDrinkChange} type="text" id="favDrink" />
+            <input value={favDrink} onChange={setFavDrink} type="text" id="favDrink" />
 
             <label htmlFor="favBubblyDrink">What is your favourite Bubbly Drink?</label>
-            <input value={favBubblyDrink} onChange={handleFavBubblyDrinkChange} type="text" id="favBubblyDrink" />
+            <input value={favBubblyDrink} onChange={setFavBubblyDrink} type="text" id="favBubblyDrink" />
             <button>Save</button>
         </form>
     )
